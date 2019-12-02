@@ -3,6 +3,7 @@ package com.kodilla.hibernate.tasklist;
 
 import com.kodilla.hibernate.task.Task;
 
+;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ public class TaskList {
     }
 
     @OneToMany(
-            targetEntity = Task.class,
             mappedBy = "taskList",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
