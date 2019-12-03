@@ -70,7 +70,6 @@ public class CompanyDaoTestSuite {
 
     @Test
     public void testNameQuery() {
-
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -92,26 +91,21 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
 
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
         //When
-        employeeDao.save(johnSmith);
-        int johnSmithId = johnSmith.getId();
-        employeeDao.save(stephanieClarckson);
-        int stephanieClarcksonId = stephanieClarckson.getId();
-        employeeDao.save(lindaKovalsky);
-        int lindaKovalskyId = lindaKovalsky.getId();
-
-
-        List<Employee> test = employeeDao.retrieveEmployeeWithLastName("Kovalsky");
-
+        List<Employee> listLastname = employeeDao.retrieveEmployeeWithLastName("Smith");
         //Then
-        Assert.assertEquals(1, test.size());
-
+        Assert.assertEquals("Smith", listLastname.get(0).getLastname());
         //CleanUp
         try {
-            employeeDao.deleteById(johnSmithId);
-            employeeDao.deleteById(stephanieClarcksonId);
-            employeeDao.deleteById(lindaKovalskyId);
-
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
         }
