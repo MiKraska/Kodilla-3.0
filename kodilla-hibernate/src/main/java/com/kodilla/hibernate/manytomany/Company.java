@@ -10,7 +10,12 @@ import java.util.List;
         query = "SELECT company_name FROM companies " +
                 "WHERE SUBSTRING(company_name, 1, 3) = :COMPANY_NAME"
 )
-@Entity
+
+@NamedQuery(
+        name = "Company.retrieveCompaniesWithFragment",
+        query = "FROM companies WHERE company_name LIKE CONCAT ('%', :PART_OF_NAME, '%')")
+
+@Entity(name = "companies")
 @Table(name = "COMPANIES")
 public class Company {
     private int id;
