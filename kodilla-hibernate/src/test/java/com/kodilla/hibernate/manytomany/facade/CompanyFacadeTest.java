@@ -30,6 +30,7 @@ public class CompanyFacadeTest {
     @Test
     public void retrieveEmployeesWithFragmentTest() throws SearchExceptions {
 
+
         Employee employee1 = new Employee("Dominik", "Kowalski");
         Employee employee2 = new Employee("Marek", "Kondrad");
 
@@ -46,6 +47,7 @@ public class CompanyFacadeTest {
             employeeDao.deleteById(employeeIdEmployee2);
         } catch (Exception e) {
             //some exception
+            //dodaj do finally delety
         }
     }
 

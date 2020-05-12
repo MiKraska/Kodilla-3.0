@@ -1,12 +1,11 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-
 public class Application {
-
     public static void main(String[] args) {
-        OrderRetriever orderRetriever = new OrderRetriever();
-        Order order = orderRetriever.retrieve();
-        OrderProcessor orderProcessor = new OrderProcessor(new InformationSender(), order.getSupplier());
-        orderProcessor.process(order);
+        ExtraFoodShop extraFoodShop = new ExtraFoodShop();
+        OrderProcessor orderProcessor = new OrderProcessor();
+        Order order = new Order(13, 300);
+
+        orderProcessor.process(extraFoodShop, order);
     }
 }
