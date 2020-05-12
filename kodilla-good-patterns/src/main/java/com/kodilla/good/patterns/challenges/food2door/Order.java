@@ -2,20 +2,41 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 class Order {
 
-    private Supplier supplier;
-    private int quantity;
+    public enum Status {
+        ACCEPTED,
+        IN_PROGRESS,
+        REJECTED,
+        FINALIZED
+    }
 
-    Order(final Supplier supplier, final int quantity) {
-        this.supplier = supplier;
+    private int productId;
+    private int quantity;
+    private Status status;
+
+
+    public Order(int productId, int quantity) {
+        this.productId = productId;
         this.quantity = quantity;
     }
 
-    Supplier getSupplier() {
-        return supplier;
+    public int getProductId() {
+        return productId;
     }
 
-    int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
+    public Status getStatus() {
+
+        if (status == null) {
+            throw new StatusException();
+        }
+
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
